@@ -12,13 +12,13 @@ Liuyuze Huang and Weijia Chen contributed equally to this work.
 
 This is the official repository of **SATR-SSM: Saliency-Aware Topology-Routed State Space Modeling for Object Detection**. This document summarizes the method, environment requirements, repository layout, dataset preparation, pretrained weights, and commands for training and evaluation.
 
-> This release contains the paper, figures, and M3FD pretrained weights. The source code will be made publicly available upon acceptance of the paper. The commands below document the implementation and require the future code release; this release is not a runnable package.
+> This release contains figures and M3FD pretrained weights. A preprint will be made available after submission. The source code will be made publicly available upon acceptance of the paper. The commands below document the implementation and require the future code release; this release is not a runnable package.
 
 [![Python](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.4.1-ee4c2c.svg)](https://pytorch.org/)
 [![License](https://img.shields.io/badge/License-AGPL--3.0-green.svg)](LICENSE)
 
-**[Paper (PDF)](paper/SATR_SSM_ICASSP2027.pdf)** · **[M3FD pretrained weights](weights/M3FDbest.pt)**
+**[M3FD pretrained weights](weights/M3FDbest.pt)**
 
 ## Performance at a Glance
 
@@ -62,8 +62,6 @@ SATR-SSM/
 │   ├── routing.png                   # Group-specific routing (Fig. 2)
 │   ├── heatmap.png                   # Stage-wise responses (Fig. 3)
 │   └── detection.png                 # Detection visualization (Fig. 4)
-├── paper/
-│   └── SATR_SSM_ICASSP2027.pdf        # Manuscript
 ├── weights/
 │   └── M3FDbest.pt                   # M3FD pretrained checkpoint
 ├── LICENSE
@@ -115,7 +113,7 @@ SHA256:
 953575c69f410ea54f005f0f53bc564a9593b4273c93aa2a95fa8a765a7adf38
 ```
 
-The checkpoint requires the corresponding SATR-SSM modules to load. Those modules are not included in this paper-and-weights release. The MFAD row reports paper results only; no MFAD checkpoint is currently provided.
+The checkpoint requires the corresponding SATR-SSM modules to load. Those modules are not included in this weights release. The MFAD row reports paper results only; no MFAD checkpoint is currently provided.
 
 ## Training
 
