@@ -1,0 +1,33 @@
+# Dependency declarations for the Linux/Python 3.12 environment in README.md.
+# The corresponding SATR-SSM source code is required to run the model.
+
+# PyTorch CUDA 12.1 builds.
+--extra-index-url https://download.pytorch.org/whl/cu121
+torch==2.4.1+cu121
+torchvision==0.19.1+cu121
+
+# Runtime dependencies of the modified Ultralytics implementation.
+# Install the project's modified Ultralytics source when it is released;
+# the upstream PyPI package does not contain the SATR-SSM modules.
+numpy>=1.23.0
+matplotlib>=3.3.0
+opencv-python>=4.6.0
+pillow>=7.1.2
+PyYAML>=5.3.1
+requests>=2.23.0
+scipy>=1.4.1
+psutil>=5.8.0
+polars>=0.20.0
+ultralytics-thop>=2.0.18
+
+# SATR-SSM modules and the Python dependencies of the Mamba extensions.
+timm==0.4.12
+einops
+ninja
+transformers>=4.39,<5
+
+# CUDA extensions: use wheels matching Python, PyTorch and C++ ABI.
+# These version declarations alone do not select a compatible wheel build.
+# Source builds require a compatible CUDA development toolkit.
+mamba-ssm==2.2.2
+causal-conv1d==1.4.0
