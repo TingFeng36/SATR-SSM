@@ -12,13 +12,13 @@ Liuyuze Huang and Weijia Chen contributed equally to this work.
 
 This is the official repository of **SATR-SSM: Saliency-Aware Topology-Routed State Space Modeling for Object Detection**. This document summarizes the method, environment requirements, repository layout, dataset preparation, pretrained weights, and commands for training and evaluation.
 
-> This release contains figures and M3FD pretrained weights. A preprint will be made available after submission. The source code will be made publicly available upon acceptance of the paper. The commands below document the implementation and require the future code release; this release is not a runnable package.
+> This release contains figures and M3FD/MFAD pretrained weights. A preprint will be made available after submission. The source code will be made publicly available upon acceptance of the paper. The commands below document the implementation and require the future code release; this release is not a runnable package.
 
 [![Python](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.4.1-ee4c2c.svg)](https://pytorch.org/)
 [![License](https://img.shields.io/badge/License-AGPL--3.0-green.svg)](LICENSE)
 
-**[M3FD pretrained weights](weights/M3FDbest.pt)**
+**[M3FD pretrained weights](weights/M3FDbest.pt) | [MFAD pretrained weights](weights/MFADbest.pt)**
 
 ## Performance at a Glance
 
@@ -63,7 +63,8 @@ SATR-SSM/
 │   ├── heatmap.png                   # Stage-wise responses (Fig. 3)
 │   └── detection.png                 # Detection visualization (Fig. 4)
 ├── weights/
-│   └── M3FDbest.pt                   # M3FD pretrained checkpoint
+│   ├── M3FDbest.pt                   # M3FD pretrained checkpoint
+│   └── MFADbest.pt                   # MFAD pretrained checkpoint
 ├── LICENSE
 └── README.md
 ```
@@ -103,17 +104,16 @@ See the dataset paper: [EI²Det: Edge-Guided Illumination-Aware Interactive Lear
 | Dataset | Checkpoint | mAP50 | mAP50:95 |
 |---|---|---:|---:|
 | M3FD | [weights/M3FDbest.pt](weights/M3FDbest.pt) | 0.706 | 0.435 |
-| MFAD | Not released | 0.655 | 0.422 |
+| MFAD | [weights/MFADbest.pt](weights/MFADbest.pt) | 0.655 | 0.422 |
 
-The M3FD checkpoint is the existing released `best.pt`, renamed without changing its contents (7,827,765 bytes).
+The M3FD and MFAD checkpoints were updated on September 28, 2026 from the latest provided `best.pt` files, renamed without changing their contents. The metrics above are the reported paper results; these replacement checkpoints have not been independently re-evaluated as part of this upload.
 
-SHA256:
+| Checkpoint | Size (bytes) | SHA256 |
+|---|---:|---|
+| `M3FDbest.pt` | 7,834,893 | `28b8171d8fe1a5330f85456c253c13962f339d7728d5b32cb52cd86fa63c011f` |
+| `MFADbest.pt` | 7,834,893 | `2a2b9988eb8719ab412a93f7766128e1e70b5460af0514f8209a0994506f29a3` |
 
-```text
-953575c69f410ea54f005f0f53bc564a9593b4273c93aa2a95fa8a765a7adf38
-```
-
-The checkpoint requires the corresponding SATR-SSM modules to load. Those modules are not included in this weights release. The MFAD row reports paper results only; no MFAD checkpoint is currently provided.
+The checkpoints require the corresponding SATR-SSM modules to load. Those modules are not included in this weights release.
 
 ## Training
 
@@ -137,7 +137,11 @@ python test.py --weights weights/M3FDbest.pt --data /absolute/path/to/m3fd.yaml 
 
 ### MFAD
 
-The paper reports MFAD results in the tables above. Evaluation requires the MFAD checkpoint and code release, which are not included here.
+The MFAD checkpoint is available at [weights/MFADbest.pt](weights/MFADbest.pt). Evaluation requires the corresponding source code, which will be released upon acceptance. After the code release, run:
+
+```bash
+python test.py --weights weights/MFADbest.pt --data /absolute/path/to/mfad.yaml --split val --device 0
+```
 
 ## Inference
 
